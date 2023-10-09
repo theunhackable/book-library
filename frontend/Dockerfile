@@ -1,17 +1,17 @@
-FROM node:18
+# base image
 
-WORKDIR /app
+FROM node:18-alpine
 
-COPY package.json package-lock.json ./
+RUN mkdir -p /usr/app
 
-RUN  npm install --production
-
-COPY next.config.js ./next.config.js
-
-COPY app components lib public ./
-
+WORKDIR /usr/app
 
 COPY . .
+
+RUN  npm install
+
 RUN npm run build
+
+EXPOSE 3000
 
 CMD ["npm", "start"]
