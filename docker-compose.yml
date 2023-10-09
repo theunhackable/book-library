@@ -1,0 +1,14 @@
+version: '3'
+services:
+  app:
+    image: frontend-book-library
+    build: ./frontend
+    ports:
+      - "3000:3000"  # Map host port 3000 to container port 3000
+
+  backend:
+    image: backend-book-library
+    build: ./backend
+        # Path to the FastAPI backend application folder
+    ports:
+      - "8000:8000"  # Map host port 8000 to container port 8000
