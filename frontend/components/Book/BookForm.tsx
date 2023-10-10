@@ -1,9 +1,8 @@
 "use client"
 import React, { useState } from 'react'
-import { Input } from './ui/input'
-import { Label } from './ui/label'
-import { Button } from './ui/button'
-import { type } from 'os'
+import { Input } from '../ui/input'
+import { Label } from '../ui/label'
+import { Button } from '../ui/button'
 
 type BookFormProps = {
   books: Book[] | null;

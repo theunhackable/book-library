@@ -1,4 +1,4 @@
-import BooksTable from '@/components/BooksTable'
+import BooksTable from '@/components/Book/BooksTable'
 import Header from '@/components/Header'
 import UserDetails from '@/components/UserDetails'
 
