@@ -1,7 +1,5 @@
 "use client"
-import { TableCell, TableRow } from "../ui/table";
-import { Button } from "../ui/button";
-import { MouseEvent, use, useEffect, useState } from "react";
+import { TableRow } from "../ui/table";
 import ToReadRow from "./ToReadRow";
 import InProgressRow from "./InProgressRow";
 import CompletedRow from "./CompletedRow";
@@ -14,11 +12,9 @@ type BookRowsProps = {
 }
 
 const BookRows = ({books, setBooks}: BookRowsProps) => {
-  const [loading, setLoading] = useState<boolean>(false);
 
   return (
     <>
-      {loading ? <div className="bg-slate-200 h-full w-full">Loading...</div> : <></>}
 
       {books?.map((book: Book) => (
 

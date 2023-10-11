@@ -46,8 +46,8 @@ async def add_book(book: InputBook):
     for b in books:
         if b.book_name == book.book_name:
             return {"data": None,"message": "book already exists"}
-    newbook = repository.create_book({"book_name": book.book_name, "book_status": "to-read"})
-    return {"data": newbook,"message": "book added successfully"}
+    book = repository.create_book({"book_name": book.book_name, "book_status": "to-read"})
+    return {"data": book,"message": "book added successfully"}
 
 
 

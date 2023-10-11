@@ -12,6 +12,7 @@ type EditBookName = {
 }
 const EditBookName = ({book, setBooks, setEdit}: EditBookName) => {
   const [newName, setNewName] = useState(book.book_name)
+  const oldName = book.book_name
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setNewName(e.target.value)
@@ -19,7 +20,9 @@ const EditBookName = ({book, setBooks, setEdit}: EditBookName) => {
   const handleSubmit = async (e: React.MouseEvent<HTMLButtonElement, globalThis.MouseEvent>) => {
     
     const newBook = {...book, book_name: newName}
+
     const res = await updateBook(book.book_id, newBook)
+    
     if(res) {
       setBooks(prevBooks => {
         const newBooks = prevBooks.map( (book: Book) => {
@@ -40,8 +43,11 @@ const EditBookName = ({book, setBooks, setEdit}: EditBookName) => {
   return (
     <div className="flex flex-col items-center justify-center">
       <Label>Enter New Name</Label>
-      <Input className="w-fit align-center " onChange={handleChange} placeholder="eg: YavaScript" value={newName}></Input>
-      <Button onClick={handleSubmit} > Submit Changes </Button>
+      <Input className="w-fit border-1" onChange={handleChange} placeholder="eg: YavaScript" value={newName}></Input>
+      <Button 
+        onClick={handleSubmit}
+        disabled={newName === oldName}
+       > Submit Changes </Button>
     </div>
   )
 }
