@@ -6,9 +6,9 @@ export const getBooksData = async () => {
 
     const res = await fetch(`${URL}/books`);
     const books = await res.json();
-    return books.data;
-  }
-  catch (err) {
+    if(books.data)
+      return books.data;
+  } catch (err) {
     console.log(err)
   }
   return null;

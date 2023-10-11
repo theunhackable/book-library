@@ -10,6 +10,7 @@ import {
 import BookRows from "./BookRows"
 import BookForm from "./BookForm";
 import { useEffect, useState } from "react";
+import { getBooksData } from "@/lib/data";
 
 const BooksTable = () => {
   const [books, setBooks] = useState<Book[]>([]);
@@ -18,9 +19,8 @@ const BooksTable = () => {
       
       async function fetchData() {
         try {
-          const res = await fetch('http://127.0.0.1:8000/books');
-          const data = await res.json();
-          setBooks(data.data)
+          const books = await getBooksData();
+          setBooks(books)
         } catch (err) {
           console.log(err)
         }
