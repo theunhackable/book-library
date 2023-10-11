@@ -68,7 +68,17 @@ class BookRepository:
         self.connection.commit()
         cursor.close()
         return self.get_book_by_id(book_id)
-
+    
+    def update_book_name(self, book_id: int, new_name: str) -> Book:
+        cursor = self.connection.cursor()
+        cursor.execute(
+            "UPDATE books SET book_name = ? WHERE book_id = ?",
+            (new_name, book_id),
+        )
+        self.connection.commit()
+        cursor.close()
+        return self.get_book_by_id(book_id)
+        
     def delete_book(self, book_id: int) -> Book:
         book_to_delete = self.get_book_by_id(book_id)
         if book_to_delete:

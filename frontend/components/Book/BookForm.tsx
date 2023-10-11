@@ -6,7 +6,7 @@ import { Button } from '../ui/button'
 
 type BookFormProps = {
   books: Book[] | null;
-  setBooks: React.Dispatch<React.SetStateAction<Book[] | null>>;
+  setBooks: React.Dispatch<React.SetStateAction<Book[]>>;
 }
 
 const BookForm = ({books, setBooks}: BookFormProps) => {

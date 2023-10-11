@@ -10,7 +10,7 @@ import CompletedRow from "./CompletedRow";
 
 type BookRowsProps = {
   books: Book[] | null;
-  setBooks: React.Dispatch<React.SetStateAction<Book[] | null>>;
+  setBooks: React.Dispatch<React.SetStateAction<Book[]>>;
 }
 
 const BookRows = ({books, setBooks}: BookRowsProps) => {

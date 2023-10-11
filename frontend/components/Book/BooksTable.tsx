@@ -12,7 +12,7 @@ import BookForm from "./BookForm";
 import { useEffect, useState } from "react";
 
 const BooksTable = () => {
-  const [books, setBooks] = useState<Book[] | null>(null);
+  const [books, setBooks] = useState<Book[]>([]);
   
   useEffect(() => {
       

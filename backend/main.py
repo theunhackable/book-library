@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from models import InputBook, InputStatus
+from models import InputBook, Book
 from database import BookRepository
 import sqlite3
 
@@ -53,11 +53,20 @@ async def add_book(book: InputBook):
 
 #update book
 @app.put('/books/{book_id}')
-async def update_book(book_id: int, new_status: str):
-
+async def update_book(book_id: int, book: Book):
+    new_book = book
     repository = BookRepository(db_connection)
+    
+    book = repository.get_book_by_id(book_id)
+    if book:
+        if new_book.book_name != book.book_name:
+            print("updating book name")   
+            res = repository.update_book_name(book_id, new_book.book_name)
+            print(res.book_name)
 
-    book = repository.update_book_status(book_id, new_status)
+        elif new_book.book_status != book.book_status:
+            print("updating book status")
+            book = repository.update_book_status(book_id, new_book.book_status)
 
     if book:
         return {"data": book, "message": "successfully updated"}
